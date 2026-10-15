@@ -1,0 +1,131 @@
+<!-- app/static/index.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta
+    name="description"
+    content="استوديو لإنشاء توجهات الهوية البصرية والتغليف بمساعدة الذكاء الاصطناعي."
+  >
+  <title>استوديو العلامة</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="استوديو العلامة">
+      <span class="brand-mark">ب</span>
+      <span>استوديو العلامة</span>
+    </a>
+    <span class="status"><span class="status-dot"></span> مساحة عمل إبداعية</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">الهوية · التغليف · الحملات</p>
+      <h1>حوّل فكرتك إلى<br><span>علامة متكاملة.</span></h1>
+      <p class="intro-copy">
+        اكتب تفاصيل مشروعك، واحصل على موجز إبداعي للهوية والتغليف والمواد الإعلانية.
+      </p>
+      <div class="feature-list">
+        <div><span class="feature-icon">✳</span><span>هوية بصرية واتجاه إبداعي</span></div>
+        <div><span class="feature-icon">▧</span><span>أفكار للتغليف والملصقات</span></div>
+        <div><span class="feature-icon">↗</span><span>نصوص للإعلانات والمنشورات</span></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <form id="design-form" class="form-card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">ابدأ مشروعاً</p>
+            <h2>موجز العلامة</h2>
+          </div>
+          <span class="step-badge">01</span>
+        </div>
+
+        <label for="brand_name">اسم العلامة <span class="required">*</span></label>
+        <input id="brand_name" name="brand_name" required maxlength="120"
+               placeholder="مثال: نواة">
+
+        <div class="field-row">
+          <div>
+            <label for="industry">المجال <span class="required">*</span></label>
+            <input id="industry" name="industry" required maxlength="160"
+                   placeholder="مثال: قهوة مختصة">
+          </div>
+          <div>
+            <label for="style">الأسلوب المرغوب</label>
+            <input id="style" name="style" maxlength="300"
+                   placeholder="هادئ، طبيعي، معاصر">
+          </div>
+        </div>
+
+        <label for="product">المنتج أو الخدمة</label>
+        <textarea id="product" name="product" rows="3" maxlength="500"
+                  placeholder="ما الذي تقدمه العلامة؟"></textarea>
+
+        <label for="audience">الجمهور المستهدف</label>
+        <textarea id="audience" name="audience" rows="2" maxlength="500"
+                  placeholder="من هم العملاء؟"></textarea>
+
+        <fieldset>
+          <legend>المخرجات المطلوبة</legend>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="deliverables"
+              value="الهوية البصرية"> الهوية البصرية</label>
+            <label class="check"><input type="checkbox" name="deliverables"
+              value="تغليف وملصق"> التغليف والملصق</label>
+            <label class="check"><input type="checkbox" name="deliverables"
+              value="منشورات اجتماعية"> منشورات اجتماعية</label>
+            <label class="check"><input type="checkbox" name="deliverables"
+              value="مطوية أو منشور مطبوع"> مطوية أو منشور مطبوع</label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div>
+            <label for="model">نموذج الذكاء الاصطناعي</label>
+            <select id="model" name="model">
+              <option value="">النموذج الافتراضي</option>
+            </select>
+          </div>
+          <button id="refresh-models" class="secondary-button" type="button">
+            تحديث النماذج
+          </button>
+        </div>
+
+        <button id="submit-button" class="primary-button" type="submit">
+          <span>إنشاء التوجه الإبداعي</span>
+          <span aria-hidden="true">←</span>
+        </button>
+        <p class="form-note">تأكد من إعداد مفتاح OpenRouter على الخادم.</p>
+      </form>
+
+      <section id="result-card" class="result-card" aria-live="polite">
+        <div class="result-empty" id="result-empty">
+          <div class="empty-art"><span>✳</span><span>▧</span><span>◈</span></div>
+          <h2>مساحتك الإبداعية جاهزة</h2>
+          <p>املأ الموجز لتظهر هنا مقترحات الهوية والتغليف والإعلانات.</p>
+        </div>
+        <div id="result-content" class="result-content hidden">
+          <div class="result-heading">
+            <div>
+              <p class="eyebrow">المقترح الإبداعي</p>
+              <h2 id="result-title">النتيجة</h2>
+            </div>
+            <button id="copy-button" class="secondary-button" type="button">نسخ النص</button>
+          </div>
+          <pre id="result-text"></pre>
+          <p id="result-model" class="result-model"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>استوديو العلامة · مساحة عمل لتطوير الأفكار البصرية</footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
